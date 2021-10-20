@@ -114,21 +114,23 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: aqua;
+  background-color: rgba(220, 20, 60, 0.99);
   margin: 10px;
   padding: 10px;
   min-width: 500px;
+  border-radius: 10px;
 }
 .cardSelected {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: aqua;
+  background-color: rgba(255, 165, 0, 0.5);
   margin: 10px;
   padding: 10px;
   min-width: 500px;
   position: absolute;
+  border-radius: 10px;
 }
 .cardSelectedWrapper {
   position: absolute;

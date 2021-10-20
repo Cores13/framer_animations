@@ -24,7 +24,8 @@ function App() {
   // third value is where the animation ends
   // all in all, first array are the positions, and the second one are sizes
   const scale = useTransform(scrollYProgress, [0.64, 0.64, 0.74], [4, 4, 0.5]); // Values from the second array: 1. size during coresponding value of the first array (position), until the second value
-  const y = useTransform(scrollYProgress, [0.64, 0.64, 0.74], [0, 255, 255]);
+  const y = useTransform(scrollYProgress, [0.64, 0.64, 7.74], [0, 255, 2255]);
+
   const rotate = useTransform(
     scrollYProgress,
     [0.73, 0.73, 0.8],

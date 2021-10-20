@@ -1,6 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  AnimatePresence,
+  AnimateSharedLayout,
+} from "framer-motion";
 import { wrap } from "popmotion";
 import { images } from "./image-data";
 
@@ -38,6 +44,7 @@ const swipePower = (offset: number, velocity: number) => {
 
 export const Slider = () => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const { scrollYProgress } = useViewportScroll();
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
@@ -49,6 +56,9 @@ export const Slider = () => {
     setPage([page + newDirection, newDirection]);
   };
 
+  const scale2 = useTransform(scrollYProgress, [0.99, 1, 1.1], [1, 1.5, 2]); // Values from the second array: 1. size during coresponding value of the first array (position), until the second value
+  const y2 = useTransform(scrollYProgress, [0.64, 1.54, 1.6], [0, 0, 1355]);
+  const rotate = useTransform(scrollYProgress, [1, 1, 1.1], [180, 180, 360]);
   return (
     <div className='example-container'>
       <AnimatePresence initial={false} custom={direction}>
@@ -56,6 +66,7 @@ export const Slider = () => {
           key={page}
           className='imgOne'
           src={images[imageIndex]}
+          style={{ scale: scale2, y: y2 }}
           custom={direction}
           variants={variants}
           initial='enter'
